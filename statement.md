@@ -1,4 +1,4 @@
-# Fake News & Spam Classification System  
+# Fake News & Spam Classifier
 ## Project Statement
 
 ---
