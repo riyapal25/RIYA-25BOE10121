@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Fake/Spam Classifier</title></head>
+<body>
+  <h2>Fake News & Spam Classifier (Demo)</h2>
+  <textarea id="txt" rows="6" cols="80" placeholder="Enter text here..."></textarea><br>
+  <button onclick="call('spam')">Predict Spam</button>
+  <button onclick="call('fakenews')">Predict Fake News</button>
+  <pre id="out"></pre>
+  <script>
+    async function call(task) {
+      const txt = document.getElementById('txt').value;
+      const res = await fetch('/predict/' + task, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({text: txt})
+      });
+      const data = await res.json();
+      document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
